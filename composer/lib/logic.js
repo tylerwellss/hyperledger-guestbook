@@ -18,26 +18,23 @@
  */
 
 /**
- * Sample transaction
- * @param {org.example.SampleTransaction} sampleTransaction
+ * Sign the guestbook
+ * @param {org.guestbook.Sign} sign
  * @transaction
  */
-async function sampleTransaction(tx) {
-    // Save the old value of the asset.
-    const oldValue = tx.asset.value;
 
-    // Update the asset with the new value.
-    tx.asset.value = tx.newValue;
-
-    // Get the asset registry for the asset.
-    const assetRegistry = await getAssetRegistry('org.example.SampleAsset');
-    // Update the asset in the asset registry.
-    await assetRegistry.update(tx.asset);
-
-    // Emit an event for the modified asset.
-    let event = getFactory().newEvent('org.example', 'SampleEvent');
-    event.asset = tx.asset;
-    event.oldValue = oldValue;
-    event.newValue = tx.newValue;
-    emit(event);
+function Sign(tx) {
+    var buf = new Uint16Array(1);
+    window.crypto.getRandomValues(buf);
+    var entryId = buf[0].toString();
+    var factory = getFactory();
+	return getAssetRegistry('org.guestbook.Entry')
+  	  .then(function(EntryRegistry){
+        var newEntry = factory.newResource('org.guestbook', 'Entry', entryId);
+        newEntry.name = tx.name;
+        newEntry.message = tx.message;
+        newEntry.entryId = entryId;
+        newEntry.date = new Date();
+        return EntryRegistry.add(newEntry)
+      })
 }
