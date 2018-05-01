@@ -49,17 +49,16 @@ cd ../../../composer && composer archive create -t dir -n .
 echo "$(tput setaf 6)$(tput bold)Business network archive file created $(tput sgr0)" && sleep 2
 
 echo "$(tput setaf 6)$(tput bold)Install Composer network to Fabric $(tput sgr0)" && sleep 2
-composer network install --card PeerAdmin@hlfv1 --archiveFile sample-network@0.0.1.bna
+composer network install --card PeerAdmin@hlfv1 --archiveFile guestbook@0.0.1.bna
 echo "$(tput setaf 6)$(tput bold)Composer business network installed $(tput sgr0)" && sleep 2
 
 echo "$(tput setaf 6)$(tput bold)Start business network $(tput sgr0)" && sleep 2
-composer network start --networkName sample-network --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+composer network start --networkName guestbook --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
 echo "$(tput setaf 6)$(tput bold)Business network started $(tput sgr0)" && sleep 2
 
 echo "$(tput setaf 6)$(tput bold)Remove existing network admin card $(tput sgr0)" && sleep 2
-composer card delete -c admin@sample-network
+composer card delete -c admin@guestbook
 echo "$(tput setaf 6)$(tput bold)Existing network admin card removed $(tput sgr0)" && sleep 2
-
 
 echo "$(tput setaf 6)$(tput bold)Import network admin identity $(tput sgr0)" && sleep 2
 composer card import --file networkadmin.card
