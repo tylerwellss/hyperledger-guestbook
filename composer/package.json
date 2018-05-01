@@ -1,5 +1,5 @@
 {
-  "name": "sample-network",
+  "name": "guestbook",
   "version": "0.0.1",
   "description": "A sample business network for the Fabric starter project",
   "scripts": {
