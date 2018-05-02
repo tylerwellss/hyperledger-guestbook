@@ -6,8 +6,8 @@ class GuestbookEntries extends React.Component {
     super();
     this.state = {
       guestbookEntries: [{
-        name: '',
-        message: ''
+        name: null,
+        message: null
       }]
     }
   };
@@ -26,17 +26,17 @@ class GuestbookEntries extends React.Component {
     return (
       <div>
         <h2>Entries</h2>
+        <div style={{'display':'grid', 'gridTemplateColumns': '33% 33% 33%'}}>
         {
           this.state.guestbookEntries.map((entry) => (
-            <Card key={entry.message} style={{'padding':'2px 0 2px 10px','margin':'5px 5px 0 5px'}}>
+            <Card key={entry.message} style={{'borderRadius':'5px','padding':'2px 2px 2px 10px','margin':'5px 5px 0 5px'}}>
               <p>{entry.message}</p>
-              <p>- {entry.name}
-              <br/><br/>
+              <p>- {entry.name}</p>
               <span style={{'fontSize':'.5em', 'color':'gray'}}>Posted: {new Date(entry.date).toLocaleString()}</span>
-              </p>
             </Card>
           ))
         }
+      </div>
       </div>
     );
   } 
