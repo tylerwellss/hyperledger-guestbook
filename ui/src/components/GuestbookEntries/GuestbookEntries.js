@@ -25,13 +25,13 @@ class GuestbookEntries extends React.Component {
   render () {
     return (
       <div>
-        <h2>Entries</h2>
+        <h2 style={{'textAlign':'center'}}>Entries</h2>
         <div style={{'display':'grid', 'gridTemplateColumns': '33% 33% 33%'}}>
         {
           this.state.guestbookEntries.map((entry) => (
             <Card key={entry.message} style={{'borderRadius':'5px','padding':'2px 2px 2px 10px','margin':'5px 5px 0 5px'}}>
-              <p>{entry.message}</p>
-              <p>- {entry.name}</p>
+              <p style={{'overflowWrap':'break-word'}}>{entry.message}</p>
+              <p style={{'overflowWrap':'break-word'}}>- {entry.name}</p>
               <span style={{'fontSize':'.5em', 'color':'gray'}}>Posted: {new Date(entry.date).toLocaleString()}</span>
             </Card>
           ))
