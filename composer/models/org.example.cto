@@ -1,9 +1,5 @@
 namespace org.guestbook
 
-participant Signer identified by SignerId {
-  o String SignerId
-}
-
 asset Entry identified by entryId {
   o String entryId
   o String message
@@ -14,4 +10,5 @@ asset Entry identified by entryId {
 transaction Sign {
   o String message
   o String name
+  o String entryId
 }

@@ -18,23 +18,19 @@
  */
 
 /**
- * Sign the guestbook
+ * Sample transaction
  * @param {org.guestbook.Sign} sign
  * @transaction
  */
-
-function Sign(tx) {
-    var buf = new Uint16Array(1);
-    window.crypto.getRandomValues(buf);
-    var entryId = buf[0].toString();
+async function Sign(tx) {
     var factory = getFactory();
-	return getAssetRegistry('org.guestbook.Entry')
-  	  .then(function(EntryRegistry){
-        var newEntry = factory.newResource('org.guestbook', 'Entry', entryId);
-        newEntry.name = tx.name;
-        newEntry.message = tx.message;
-        newEntry.entryId = entryId;
-        newEntry.date = new Date();
-        return EntryRegistry.add(newEntry)
-      })
+    return getAssetRegistry('org.guestbook.Entry')
+        .then(function (EntryRegistry) {
+            var newEntry = factory.newResource('org.guestbook', 'Entry', tx.entryId);
+            newEntry.name = tx.name;
+            newEntry.message = tx.message;
+            newEntry.entryId = tx.entryId;
+            newEntry.date = new Date();
+            return EntryRegistry.add(newEntry);
+        });
 }

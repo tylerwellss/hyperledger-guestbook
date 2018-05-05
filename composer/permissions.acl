@@ -27,11 +27,3 @@ rule NetworkAdminSystem {
     resource: "org.hyperledger.composer.system.**"
     action: ALLOW
 }
-
-rule User {
-    description: "Grant business network administrators full access to user resources"
-    participant: "org.guestbook.Signer"
-    operation: READ, CREATE
-    resource: "**"
-    action: ALLOW
-}
