@@ -15,11 +15,11 @@ A simple blockchain guestbook powered by Hyperledger Fabric, Hyperledger Compose
 # Clone this repo
 git clone https://github.com/wellstyler/hyperledger-guestbook.git
 
+# Install dependencies in /composer, /explorer, /ui, and /fabric.
+npm i
+
 # Run the deploy script
 ./deploy.sh
-
-# Install dependencies in /composer, /explorer, and /fabric.
-npm i
 
 # Run the web server
 npm start
