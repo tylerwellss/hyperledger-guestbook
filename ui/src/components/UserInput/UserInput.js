@@ -45,7 +45,7 @@ class UserInput extends React.Component {
         return (
         <div style={{'textAlign': 'center'}}>
             <p>Input your name and a message and stay on our blockchain forever!
-            <span style={{'fontSize':'.63em'}}> (or until our server stops since we're the only peer)</span></p>
+            <span style={{'fontSize':'.63em'}}> (or until this server stops since we're the only peer)</span></p>
             <form>
               <TextField
               required
